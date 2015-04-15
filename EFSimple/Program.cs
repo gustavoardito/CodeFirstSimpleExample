@@ -10,6 +10,7 @@ namespace EFSimple
     {
         static void Main(string[] args)
         {
+            //by default connect to Server : (localdb)\mssqllocaldb
             using (var ctx = new SchoolContext())
             {
                 Student stud = new Student { StudentName = "New Student 02" };
