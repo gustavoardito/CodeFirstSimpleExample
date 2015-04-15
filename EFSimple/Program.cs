@@ -12,11 +12,18 @@ namespace EFSimple
         {
             using (var ctx = new SchoolContext())
             {
-                Student stud = new Student { StudentName = "New Student" };
+                Student stud = new Student { StudentName = "New Student 02" };
 
                 ctx.Students.Add(stud);
                 ctx.SaveChanges();
+                foreach (var student in ctx.Students)
+                {
+                    Console.WriteLine(student.StudentName);
+                }
+                
             }
+
+            Console.ReadKey();
         }
     }
 }
