@@ -10,7 +10,7 @@ namespace InheritanceEFExample
     {
         static void Main(string[] args)
         {
-            using (var ctx = new InheritanceMappingContext())
+            using (var ctx = new InheritanceTphContext())
             {
                 CreditCard cred = new CreditCard() {Number  = "12300001", Owner = "Yo"};
 
@@ -20,6 +20,11 @@ namespace InheritanceEFExample
                 var acc = new BankAccount() { Number = "123456780", Owner = "Otro" ,BankName = "Banco de la Alegria SA"};
 
                 ctx.BillingDetails.Add(acc);
+                ctx.SaveChanges();
+
+                var acc2 = new BankAccount() { Number = "123456789", Owner = "Yo", BankName = "Banco de la Alegria" };
+
+                ctx.BillingDetails.Add(acc2);
                 ctx.SaveChanges();
 
                 IQueryable<BankAccount> query = from b in ctx.BillingDetails.OfType<BankAccount>()
